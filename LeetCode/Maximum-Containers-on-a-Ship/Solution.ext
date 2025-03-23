@@ -1,0 +1,9 @@
+class Solution {
+public:
+    int maxContainers(int n, int w, int maxWeight) {
+        int cells = n*n;
+        int maxi = maxWeight/w;
+        int ans = min(cells,maxi);
+        return ans;
+    }
+};
