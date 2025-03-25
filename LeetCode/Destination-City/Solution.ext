@@ -1,3 +1,22 @@
 Input: paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
 Output: "Sao Paulo" 
 Explanation: Starting at "London" city you will reach "Sao Paulo" city which is the destination city. Your trip consist of: "London" -> "New York" -> "Lima" -> "Sao Paulo".
+
+
+class Solution {
+public:
+    string destCity(vector<vector<string>>& paths) {
+          unordered_set<string>start,end; //start city,end city
+          for(auto it:paths){
+               start.insert(it[0]);
+               end.insert(it[1]);
+
+          }
+          for(string city:end){
+            if(start.find(city)==start.end()){
+                return city;
+            }
+          }
+          return " ";
+    }
+};
