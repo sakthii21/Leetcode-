@@ -1,0 +1,38 @@
+class Solution {
+public:
+
+bool isnon(const vector<int>&nums){
+    for(int i=0;i<nums.size()-1;i++){
+        if(nums[i]>nums[i+1]) return false;
+}
+    return true;
+}
+    int minimumPairRemoval(vector<int>& nums) {
+        int op=0;
+        while(!isnon(nums)){
+            int minsum = INT_MAX;
+            int ind=-1;
+            for(int i=0;i<nums.size()-1;i++){
+                int s=nums[i]+nums[i+1];
+                if(s<minsum)
+                {
+                    minsum=s;
+                    ind=i;
+                }       
+            }
+            vector<int>num;
+            for(int i=0;i<nums.size();i++){
+                if(i==ind){
+                    num.push_back(nums[i]+nums[i+1]);
+                    ++i;
+                }else{
+                    num.push_back(nums[i]);
+                }
+            }
+            nums=num;
+            op++;
+            
+        }
+        return op;
+    }
+};
