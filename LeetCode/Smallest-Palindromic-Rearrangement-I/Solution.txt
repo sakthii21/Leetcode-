@@ -1,0 +1,29 @@
+class Solution {
+public:
+    string smallestPalindrome(string s) {
+        unordered_map<char,int>mpp;
+        for(char ch:s){
+            mpp[ch]++;
+        }
+        string half = "";
+        char odd =0;
+
+        for(char ch='a';ch<='z';ch++){
+            if(mpp.count(ch)){
+                if(mpp[ch]%2==1){
+                    if(odd==0){
+                        odd=ch;
+                    }
+                }
+                half+=string(mpp[ch]/2,ch);
+            }
+        }
+        string res = half;
+        if(odd!=0){
+            res+=string(mpp[odd]%2,odd);
+        }
+        reverse(half.begin(),half.end());
+        res+=half;
+        return res;
+    }
+};©leetcode
